@@ -93,4 +93,46 @@ RailsAdmin.config do |config|
     label "Quote Requests"
     label_plural "Quote Requests"
   end
+
+  # Configure Equipment model for Rails Admin
+  config.model Equipment do
+    list do
+      field :id
+      field :name
+      field :kva_rating
+      field :category
+      field :price_per_day
+      field :is_available
+      field :created_at
+    end
+
+    show do
+      field :id
+      field :name
+      field :description
+      field :kva_rating
+      field :category
+      field :price_per_day
+      field :features
+      field :image_url
+      field :is_available
+      field :created_at
+      field :updated_at
+    end
+
+    edit do
+      field :name
+      field :description
+      field :kva_rating
+      field :category
+      field :price_per_day
+      field :features
+      field :image_url
+      field :is_available
+    end
+
+    # Custom label for navigation
+    label "Equipment"
+    label_plural "Equipment"
+  end
 end

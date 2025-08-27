@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  kva_rating: 1
+  category: MyString
+  price_per_day: 9.99
+  features: 
+  image_url: MyString
+  is_available: false
+
+two:
+  name: MyString
+  description: MyText
+  kva_rating: 1
+  category: MyString
+  price_per_day: 9.99
+  features: 
+  image_url: MyString
+  is_available: false

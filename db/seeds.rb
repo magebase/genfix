@@ -62,6 +62,55 @@ end
 
 puts "Created #{blog_posts.size} sample blog posts"
 
+# Create sample equipment
+equipment_data = [
+  {
+    name: "Portable 5kVA Generator",
+    description: "Perfect for small construction sites, lighting setups, and basic power needs. This compact generator delivers reliable power for tools, lights, and small equipment. Features include electric start, fuel-efficient operation, and quiet performance.",
+    kva_rating: 5,
+    category: "Portable",
+    price_per_day: 85.00,
+    features: ["Electric Start", "Fuel Efficient", "Quiet Operation", "Wheel Kit", "Multiple Outlets", "Low Oil Shutdown"],
+    image_url: "/images/generator-maintenance.jpg",
+    is_available: true
+  },
+  {
+    name: "Standby 10kVA Generator",
+    description: "Ideal for medium-sized construction projects, events, and backup power. This robust generator provides consistent power for multiple tools, lighting systems, and equipment. Built for reliability with advanced safety features.",
+    kva_rating: 10,
+    category: "Standby",
+    price_per_day: 145.00,
+    features: ["Auto Start", "Weather Protection", "Fuel Tank Gauge", "Circuit Breaker Protection", "Remote Monitoring", "Extended Runtime"],
+    image_url: "/images/generator-maintenance.jpg",
+    is_available: true
+  },
+  {
+    name: "Mobile 15kVA Generator",
+    description: "Heavy-duty generator perfect for large construction sites, industrial applications, and major events. This powerhouse delivers the performance you need for demanding equipment and multiple power requirements.",
+    kva_rating: 15,
+    category: "Mobile",
+    price_per_day: 220.00,
+    features: ["Heavy-Duty Construction", "Large Fuel Capacity", "Multiple Voltage Outputs", "Phase Selection", "Load Management", "Industrial Grade"],
+    image_url: "/images/generator-maintenance.jpg",
+    is_available: true
+  }
+]
+
+# Create equipment
+equipment_data.each do |equipment|
+  Equipment.find_or_create_by!(name: equipment[:name]) do |eq|
+    eq.description = equipment[:description]
+    eq.kva_rating = equipment[:kva_rating]
+    eq.category = equipment[:category]
+    eq.price_per_day = equipment[:price_per_day]
+    eq.features = equipment[:features]
+    eq.image_url = equipment[:image_url]
+    eq.is_available = equipment[:is_available]
+  end
+end
+
+puts "Created #{equipment_data.size} sample equipment items"
+
 # Create default admin user
 if AdminUser.find_by(email: 'admin@genfix.com').nil?
   AdminUser.create!(

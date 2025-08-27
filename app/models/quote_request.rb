@@ -1,20 +1,12 @@
 class QuoteRequest < ApplicationRecord
-  validates :name, :email, :phone, :equipment_type, :rental_duration, :delivery_address, presence: true
+  validates :name, :email, :phone, :delivery_address, presence: true
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :quote_price, numericality: { greater_than: 0 }, allow_nil: true
 
-  before_create :set_default_status
+  attribute :status, :integer, default: 0
+  enum :status, { pending: 0, quoted: 1, approved: 2, paid: 3, delivered: 4, completed: 5, cancelled: 6 }, default: :pending
 
-  # Status options for quote lifecycle
-  enum :status, {
-    pending: "pending",
-    quoted: "quoted",
-    approved: "approved",
-    paid: "paid",
-    delivered: "delivered",
-    completed: "completed",
-    cancelled: "cancelled"
-  }, default: :pending
+  before_save :calculate_hire_dates
 
   # Stripe payment integration
   def generate_stripe_payment_link
@@ -73,7 +65,31 @@ class QuoteRequest < ApplicationRecord
 
   private
 
-  def set_default_status
-    self.status ||= 'pending'
+  def calculate_hire_dates
+    return if start_hire_date.present? && end_hire_date.present?
+    return if rental_duration.blank?
+
+    # Assume start date is tomorrow (next business day)
+    start_date = Date.tomorrow
+
+    # Calculate end date based on rental duration
+    case rental_duration
+    when "1-day"
+      end_date = start_date + 1.day
+    when "3-days"
+      end_date = start_date + 3.days
+    when "1-week"
+      end_date = start_date + 1.week
+    when "2-weeks"
+      end_date = start_date + 2.weeks
+    when "1-month"
+      end_date = start_date + 1.month
+    else
+      # For "other" or unknown durations, default to 1 week
+      end_date = start_date + 1.week
+    end
+
+    self.start_hire_date ||= start_date
+    self.end_hire_date ||= end_date
   end
 end

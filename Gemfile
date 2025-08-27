@@ -54,6 +54,9 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
+  # Test data generation
+  gem "factory_bot_rails"
+  gem "faker"
 end
 
 gem "inertia_rails", "~> 3.10"
@@ -64,7 +67,8 @@ gem "vite_rails", "~> 3.0"
 gem "rails_admin", "~> 3.1"
 
 # AWS SES for email delivery
-gem "aws-sdk-ses", "~> 1.0"
+gem "aws-sdk-rails", "~> 5"
+gem "aws-actionmailer-ses", "~> 1"
 
 # Authentication
 gem "devise", "~> 4.9"

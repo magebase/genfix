@@ -52,7 +52,7 @@
 
       <div class="actions">
         <p><strong>Ready to proceed?</strong></p>
-        <a href="/quote_requests/<%= @quote_request.id %>/approve" class="btn btn-approve">✅ Approve Quote</a>
+        <a href="<%= quote_request_url(@quote_request.id) %>/approve" class="btn btn-approve">✅ Approve Quote</a>
         <a href="tel:+61412345678" class="btn btn-reject">📞 Call to Discuss</a>
       </div>
 

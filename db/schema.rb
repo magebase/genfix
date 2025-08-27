@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_27_061118) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_27_103348) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -83,15 +83,92 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_27_061118) do
     t.string "author_profile_picture"
   end
 
+  create_table "clients", force: :cascade do |t|
+    t.string "company_name"
+    t.string "contact_name"
+    t.string "email"
+    t.string "phone"
+    t.text "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "contracts", force: :cascade do |t|
+    t.bigint "quote_request_id", null: false
+    t.bigint "client_id", null: false
+    t.text "generated_clauses"
+    t.string "jurisdiction"
+    t.datetime "signed_at"
+    t.string "signature_method"
+    t.jsonb "contract_data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_contracts_on_client_id"
+    t.index ["quote_request_id"], name: "index_contracts_on_quote_request_id"
+  end
+
+  create_table "equipment", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "kva_rating"
+    t.string "category"
+    t.decimal "price_per_day"
+    t.jsonb "features"
+    t.string "image_url"
+    t.boolean "is_available"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "features", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "category"
+    t.decimal "base_cost"
+    t.integer "complexity_level"
+    t.jsonb "dependencies"
+    t.boolean "requires_customization"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.bigint "quote_request_id", null: false
+    t.decimal "amount"
+    t.string "status"
+    t.string "payment_method"
+    t.string "transaction_id"
+    t.jsonb "payment_data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quote_request_id"], name: "index_payments_on_quote_request_id"
+  end
+
+  create_table "project_milestones", force: :cascade do |t|
+    t.bigint "quote_request_id", null: false
+    t.string "name"
+    t.text "description"
+    t.date "due_date"
+    t.string "status"
+    t.jsonb "milestone_data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["quote_request_id"], name: "index_project_milestones_on_quote_request_id"
+  end
+
+  create_table "quote_request_features", force: :cascade do |t|
+    t.bigint "quote_request_id", null: false
+    t.bigint "feature_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feature_id"], name: "index_quote_request_features_on_feature_id"
+    t.index ["quote_request_id"], name: "index_quote_request_features_on_quote_request_id"
+  end
+
   create_table "quote_requests", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.string "phone"
-    t.string "equipment_type"
-    t.string "rental_duration"
-    t.string "delivery_address"
-    t.text "special_requirements"
-    t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "quote_price"
@@ -99,5 +176,34 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_27_061118) do
     t.datetime "quoted_at"
     t.datetime "approved_at"
     t.string "stripe_invoice_id"
+    t.string "project_name"
+    t.text "project_description"
+    t.string "use_case"
+    t.jsonb "selected_features_json"
+    t.jsonb "ai_pricing_json"
+    t.jsonb "project_plan_json"
+    t.decimal "estimated_cost", precision: 10, scale: 2
+    t.decimal "monthly_retainer", precision: 10, scale: 2
+    t.decimal "deposit_amount", precision: 10, scale: 2
+    t.string "aasm_state", default: "draft"
+    t.bigint "client_id"
+    t.string "equipment_type"
+    t.string "rental_duration"
+    t.text "delivery_address"
+    t.text "special_requirements"
+    t.datetime "start_hire_date"
+    t.datetime "end_hire_date"
+    t.index ["aasm_state"], name: "index_quote_requests_on_aasm_state"
+    t.index ["client_id"], name: "index_quote_requests_on_client_id"
+    t.index ["selected_features_json"], name: "index_quote_requests_on_selected_features_json", using: :gin
+    t.index ["use_case"], name: "index_quote_requests_on_use_case"
   end
+
+  add_foreign_key "contracts", "clients"
+  add_foreign_key "contracts", "quote_requests"
+  add_foreign_key "payments", "quote_requests"
+  add_foreign_key "project_milestones", "quote_requests"
+  add_foreign_key "quote_request_features", "features"
+  add_foreign_key "quote_request_features", "quote_requests"
+  add_foreign_key "quote_requests", "clients"
 end

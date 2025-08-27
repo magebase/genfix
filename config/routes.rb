@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  # Equipment page
+  get 'equipment', to: 'equipment#index'
+
+  require 'devise'
   devise_for :admin_users
   # Blog routes
   get 'blog', to: 'blog#index'

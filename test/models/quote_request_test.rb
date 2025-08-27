@@ -34,8 +34,6 @@ class QuoteRequestTest < ActiveSupport::TestCase
     assert_includes quote_request.errors[:name], "can't be blank"
     assert_includes quote_request.errors[:email], "can't be blank"
     assert_includes quote_request.errors[:phone], "can't be blank"
-    assert_includes quote_request.errors[:equipment_type], "can't be blank"
-    assert_includes quote_request.errors[:rental_duration], "can't be blank"
     assert_includes quote_request.errors[:delivery_address], "can't be blank"
   end
 

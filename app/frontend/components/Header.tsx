@@ -37,7 +37,7 @@ const Header: React.FC = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gray-400 transition-all duration-200 group-hover:w-full"></span>
             </a>
             <a
-              href="/#equipment"
+              href="/equipment"
               className="text-white hover:text-white font-medium transition-colors duration-200 relative group"
             >
               Equipment
@@ -114,7 +114,7 @@ const Header: React.FC = () => {
                 Features
               </a>
               <a
-                href="/#equipment"
+                href="/equipment"
                 className="text-white hover:text-gray-300 font-medium py-2 transition-colors duration-200"
                 onClick={() => setIsMobileMenuOpen(false)}
               >

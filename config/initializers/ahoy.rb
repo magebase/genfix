@@ -1,4 +1,8 @@
 class Ahoy::Store < Ahoy::DatabaseStore
+  def user
+    # Use AdminUser instead of User
+    controller.send(:current_admin_user) if controller.respond_to?(:current_admin_user)
+  end
 end
 
 # set to true for JavaScript tracking

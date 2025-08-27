@@ -1,6 +1,19 @@
 class QuoteRequestsController < ApplicationController
+  require 'net/http'
+  require 'json'
   def create
-    @quote_request = QuoteRequest.new(quote_request_params)
+    # Skip reCAPTCHA verification in test environment
+    unless Rails.env.test?
+      unless verify_recaptcha(params[:quote_request][:recaptcha_token])
+        render inertia: 'Landing', props: {
+          title: 'Genfix — Commercial Generator Hire',
+          quote_errors: ['reCAPTCHA verification failed. Please try again.']
+        }
+        return
+      end
+    end
+
+    @quote_request = QuoteRequest.new(quote_request_params.except(:recaptcha_token))
 
     if @quote_request.save
       # Send confirmation email to customer
@@ -9,9 +22,18 @@ class QuoteRequestsController < ApplicationController
       # Send notification email to admin
       QuoteMailer.admin_notification(@quote_request).deliver_later
 
-      render json: { success: true, message: 'Quote request submitted successfully!' }, status: :created
+      render inertia: 'Landing', props: {
+        title: 'Genfix — Commercial Generator Hire',
+        quote_submitted: true,
+        quote_request: @quote_request.as_json(
+          only: [:id, :name, :email, :equipment_type, :delivery_address, :special_requirements, :start_hire_date, :end_hire_date]
+        )
+      }
     else
-      render json: { success: false, errors: @quote_request.errors.full_messages }, status: :unprocessable_entity
+      render inertia: 'Landing', props: {
+        title: 'Genfix — Commercial Generator Hire',
+        quote_errors: @quote_request.errors.full_messages
+      }
     end
   end
 
@@ -51,6 +73,25 @@ class QuoteRequestsController < ApplicationController
 
   private
 
+  def verify_recaptcha(token)
+    return false if token.blank?
+
+    secret_key = ENV['RECAPTCHA_SECRET_KEY']
+    return false if secret_key.blank?
+
+    uri = URI('https://www.google.com/recaptcha/api/siteverify')
+    response = Net::HTTP.post_form(uri, {
+      'secret' => secret_key,
+      'response' => token
+    })
+
+    result = JSON.parse(response.body)
+    result['success']
+  rescue StandardError => e
+    Rails.logger.error("reCAPTCHA verification failed: #{e.message}")
+    false
+  end
+
   def quote_request_params
     params.require(:quote_request).permit(
       :name,
@@ -65,7 +106,8 @@ class QuoteRequestsController < ApplicationController
       :quoted_at,
       :approved_at,
       :stripe_invoice_id,
-      :status
+      :status,
+      :recaptcha_token
     )
   end
 end

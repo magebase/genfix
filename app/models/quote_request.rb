@@ -58,6 +58,19 @@ class QuoteRequest < ApplicationRecord
     update(status: :paid)
   end
 
+  # Admin quote preparation
+  def prepare_quote(price:, notes: nil)
+    update!(
+      quote_price: price,
+      admin_notes: notes,
+      status: :quoted,
+      quoted_at: Time.current
+    )
+
+    # Send quote prepared email
+    QuoteMailer.quote_prepared(self).deliver_now
+  end
+
   private
 
   def set_default_status

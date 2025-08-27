@@ -68,3 +68,6 @@ gem "aws-sdk-ses", "~> 1.0"
 
 # Authentication
 gem "devise", "~> 4.9"
+
+# Payment processing
+gem "stripe", "~> 10.0"

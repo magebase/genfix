@@ -8,6 +8,28 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Professional generator rental services across Brisbane. Fast delivery, reliable equipment, and 24/7 support for construction, events, and emergency power needs.">
+    <meta name="keywords" content="generator rental, Brisbane, power solutions, equipment hire, emergency power, construction equipment">
+    <meta name="author" content="Genfix">
+    <link rel="canonical" href="<%= request.original_url %>">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<%= request.original_url %>">
+    <meta property="og:title" content="<%= content_for(:title) || "Genfix - Power Solutions for Brisbane" %>">
+    <meta property="og:description" content="Professional generator rental services across Brisbane. Fast delivery, reliable equipment, and 24/7 support.">
+    <meta property="og:image" content="/images/generator-hero.jpg">
+    <meta property="og:site_name" content="Genfix">
+    <meta property="og:locale" content="en_AU">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="<%= request.original_url %>">
+    <meta name="twitter:title" content="<%= content_for(:title) || "Genfix - Power Solutions for Brisbane" %>">
+    <meta name="twitter:description" content="Professional generator rental services across Brisbane. Fast delivery, reliable equipment, and 24/7 support.">
+    <meta name="twitter:image" content="/images/generator-hero.jpg">
+
     <%= yield :head %>
 
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>

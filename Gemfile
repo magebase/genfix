@@ -74,3 +74,8 @@ gem "stripe", "~> 10.0"
 
 # Analytics
 gem "ahoy_matey", "~> 5.0"
+
+# SEO
+gem "sitemap_generator", "~> 6.3"
+gem "meta-tags", "~> 2.18"
+gem "builder", "~> 3.2"

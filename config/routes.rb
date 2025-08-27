@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     end
   end
 
+  # Sitemap
+  get '/sitemap.xml', to: 'sitemaps#show', as: :sitemap
+
   # Rails Admin
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 

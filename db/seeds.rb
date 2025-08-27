@@ -61,3 +61,15 @@ blog_posts.each do |post_data|
 end
 
 puts "Created #{blog_posts.size} sample blog posts"
+
+# Create default admin user
+if AdminUser.find_by(email: 'admin@genfix.com').nil?
+  AdminUser.create!(
+    email: 'admin@genfix.com',
+    password: 'password123',
+    password_confirmation: 'password123'
+  )
+  puts "Created default admin user: admin@genfix.com / password123"
+else
+  puts "Admin user already exists"
+end

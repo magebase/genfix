@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admin_users
   # Blog routes
   get 'blog', to: 'blog#index'
   get 'blog/:slug', to: 'blog#show', as: :blog_post

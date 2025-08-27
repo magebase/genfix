@@ -65,3 +65,6 @@ gem "rails_admin", "~> 3.1"
 
 # AWS SES for email delivery
 gem "aws-sdk-ses", "~> 1.0"
+
+# Authentication
+gem "devise", "~> 4.9"

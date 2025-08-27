@@ -1,0 +1,22 @@
+🚨 NEW QUOTE REQUEST - ACTION REQUIRED
+
+A new quote request has been submitted and requires your attention.
+
+CUSTOMER DETAILS:
+- Name: <%= @quote_request.name %>
+- Email: <%= @quote_request.email %>
+- Phone: <%= @quote_request.phone %>
+- Equipment Type: <%= @quote_request.equipment_type %>
+- Rental Duration: <%= @quote_request.rental_duration %>
+- Delivery Address: <%= @quote_request.delivery_address %>
+<% if @quote_request.special_requirements.present? %>
+- Special Requirements: <%= @quote_request.special_requirements %>
+<% end %>
+
+NEXT STEPS:
+1. Review the customer's requirements
+2. Prepare a competitive quote
+3. Update the quote status and add pricing in Rails Admin
+4. The system will automatically send the quote to the customer
+
+View in Admin Panel: /admin

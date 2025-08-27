@@ -40,6 +40,14 @@ Rails.application.configure do
   # Set localhost to be used by links generated in mailer templates.
   config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
 
+  # AWS SES Configuration for development
+  config.action_mailer.delivery_method = :ses
+  config.action_mailer.ses = {
+    access_key_id: ENV['AWS_ACCESS_KEY_ID'],
+    secret_access_key: ENV['AWS_SECRET_ACCESS_KEY'],
+    region: ENV.fetch('AWS_REGION', 'us-east-1')
+  }
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 

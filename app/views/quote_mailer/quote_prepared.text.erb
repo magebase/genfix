@@ -1,0 +1,34 @@
+💰 YOUR QUOTE IS READY - GENFIX
+
+<%= @greeting %>,
+
+Great news! We've prepared a customized quote for your power requirements.
+
+YOUR QUOTE: $<%= number_with_precision(@quote_request.quote_price, precision: 2) %>
+Equipment: <%= @quote_request.equipment_type %>
+Duration: <%= @quote_request.rental_duration %>
+Delivery: <%= @quote_request.delivery_address %>
+
+<% if @quote_request.special_requirements.present? %>
+Special Requirements: <%= @quote_request.special_requirements %>
+<% end %>
+
+<% if @quote_request.admin_notes.present? %>
+Additional Notes: <%= @quote_request.admin_notes %>
+<% end %>
+
+READY TO PROCEED?
+- Approve online: /quote_requests/<%= @quote_request.id %>/approve
+- Call to discuss: 0412 345 678
+
+INCLUDED IN YOUR QUOTE:
+- Professional delivery and setup
+- Fuel for the rental period
+- 24/7 technical support
+- Full insurance coverage
+- Licensed electrician setup
+
+This quote is valid for 7 days. If you have any questions, please call us.
+
+Best regards,
+The Genfix Team

@@ -1,0 +1,28 @@
+🎉 QUOTE REQUEST RECEIVED - GENFIX
+
+<%= @greeting %>,
+
+Thank you for your quote request! We've received your details and our team will prepare a customized quote for you.
+
+YOUR REQUEST DETAILS:
+- Equipment: <%= @quote_request.equipment_type %>
+- Rental Duration: <%= @quote_request.rental_duration %>
+- Delivery Address: <%= @quote_request.delivery_address %>
+<% if @quote_request.special_requirements.present? %>
+- Special Requirements: <%= @quote_request.special_requirements %>
+<% end %>
+
+WHAT HAPPENS NEXT?
+1. Our power specialist will review your requirements
+2. We'll prepare a customized quote (usually within 1 hour)
+3. You'll receive an email with your quote details
+4. If approved, we'll arrange delivery and setup
+
+If you have any questions, please don't hesitate to call us on 0412 345 678.
+
+Best regards,
+The Genfix Team
+
+---
+Genfix - Powering Brisbane Since 2020
+Email: info@genfix.com | Phone: 0412 345 678

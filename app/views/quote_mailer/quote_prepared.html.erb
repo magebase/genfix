@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Your Quote is Ready - Genfix</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+    .header { background: #28a745; color: white; padding: 20px; text-align: center; border-radius: 8px; margin-bottom: 20px; }
+    .content { background: #fff; padding: 20px; border: 1px solid #dee2e6; border-radius: 8px; }
+    .quote-box { background: #e9ecef; border: 2px solid #28a745; padding: 20px; border-radius: 8px; margin: 20px 0; text-align: center; }
+    .price { font-size: 24px; font-weight: bold; color: #28a745; }
+    .actions { text-align: center; margin: 20px 0; }
+    .btn { display: inline-block; padding: 12px 24px; margin: 10px; text-decoration: none; border-radius: 5px; font-weight: bold; }
+    .btn-approve { background: #28a745; color: white; }
+    .btn-reject { background: #dc3545; color: white; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>💰 Your Quote is Ready!</h1>
+      <p>Customized just for you</p>
+    </div>
+
+    <div class="content">
+      <p><%= @greeting %>,</p>
+
+      <p>Great news! We've prepared a customized quote for your power requirements.</p>
+
+      <div class="quote-box">
+        <h2>Your Quote Details</h2>
+        <div class="price">$<%= number_with_precision(@quote_request.quote_price, precision: 2) %></div>
+        <p><strong><%= @quote_request.equipment_type %></strong></p>
+        <p><%= @quote_request.rental_duration %> rental</p>
+      </div>
+
+      <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0;">
+        <h3>Equipment & Service Details:</h3>
+        <ul>
+          <li><strong>Equipment:</strong> <%= @quote_request.equipment_type %></li>
+          <li><strong>Rental Duration:</strong> <%= @quote_request.rental_duration %></li>
+          <li><strong>Delivery Address:</strong> <%= @quote_request.delivery_address %></li>
+          <% if @quote_request.special_requirements.present? %>
+            <li><strong>Special Requirements:</strong> <%= @quote_request.special_requirements %></li>
+          <% end %>
+          <% if @quote_request.admin_notes.present? %>
+            <li><strong>Additional Notes:</strong> <%= @quote_request.admin_notes %></li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="actions">
+        <p><strong>Ready to proceed?</strong></p>
+        <a href="/quote_requests/<%= @quote_request.id %>/approve" class="btn btn-approve">✅ Approve Quote</a>
+        <a href="tel:+61412345678" class="btn btn-reject">📞 Call to Discuss</a>
+      </div>
+
+      <p><strong>Included in your quote:</strong></p>
+      <ul>
+        <li>Professional delivery and setup</li>
+        <li>Fuel for the rental period</li>
+        <li>24/7 technical support</li>
+        <li>Full insurance coverage</li>
+        <li>Licensed electrician setup</li>
+      </ul>
+
+      <p>This quote is valid for 7 days. If you have any questions or need modifications, please call us on <strong>0412 345 678</strong>.</p>
+
+      <p>Best regards,<br>
+      The Genfix Team</p>
+    </div>
+  </div>
+</body>
+</html>

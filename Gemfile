@@ -62,3 +62,6 @@ gem "vite_rails", "~> 3.0"
 
 # Admin interface
 gem "rails_admin", "~> 3.1"
+
+# AWS SES for email delivery
+gem "aws-sdk-ses", "~> 1.0"

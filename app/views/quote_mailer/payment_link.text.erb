@@ -1,0 +1,27 @@
+💳 PAYMENT LINK READY - GENFIX
+
+<%= @greeting %>,
+
+Thank you for approving your quote! Your payment link is ready.
+
+PAYMENT DUE: $<%= number_with_precision(@quote_request.quote_price, precision: 2) %>
+For: <%= @quote_request.equipment_type %>
+
+PAY NOW: <%= @payment_url %>
+
+🔒 SECURE PAYMENT
+Your payment is processed securely through Stripe with 256-bit SSL encryption.
+We never store your card details.
+
+WHAT HAPPENS AFTER PAYMENT?
+1. You'll receive a confirmation email with delivery details
+2. Our team will contact you to schedule delivery
+3. Licensed electrician will deliver and install your equipment
+4. 24/7 support available throughout your rental period
+
+Need to make changes? Call us on 0412 345 678 before completing payment.
+
+This payment link expires in 7 days for security reasons.
+
+Best regards,
+The Genfix Team

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>New Quote Request</title>
+  <style>
+    body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; }
+    .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+    .header { background: #dc3545; color: white; padding: 20px; text-align: center; border-radius: 8px; margin-bottom: 20px; }
+    .content { background: #fff; padding: 20px; border: 1px solid #dee2e6; border-radius: 8px; }
+    .urgent { background: #f8d7da; border: 1px solid #f5c6cb; padding: 15px; border-radius: 8px; margin: 15px 0; }
+    .details { background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🚨 NEW QUOTE REQUEST</h1>
+      <p>Action Required</p>
+    </div>
+
+    <div class="content">
+      <div class="urgent">
+        <strong>URGENT:</strong> A new quote request has been submitted and requires your attention.
+      </div>
+
+      <div class="details">
+        <h3>Customer Details:</h3>
+        <ul>
+          <li><strong>Name:</strong> <%= @quote_request.name %></li>
+          <li><strong>Email:</strong> <%= @quote_request.email %></li>
+          <li><strong>Phone:</strong> <%= @quote_request.phone %></li>
+          <li><strong>Equipment Type:</strong> <%= @quote_request.equipment_type %></li>
+          <li><strong>Rental Duration:</strong> <%= @quote_request.rental_duration %></li>
+          <li><strong>Delivery Address:</strong> <%= @quote_request.delivery_address %></li>
+          <% if @quote_request.special_requirements.present? %>
+            <li><strong>Special Requirements:</strong> <%= @quote_request.special_requirements %></li>
+          <% end %>
+        </ul>
+      </div>
+
+      <p><strong>Next Steps:</strong></p>
+      <ol>
+        <li>Review the customer's requirements</li>
+        <li>Prepare a competitive quote</li>
+        <li>Update the quote status and add pricing in Rails Admin</li>
+        <li>The system will automatically send the quote to the customer</li>
+      </ol>
+
+      <p><a href="/admin" style="background: #007bff; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px;">View in Admin Panel</a></p>
+    </div>
+  </div>
+</body>
+</html>

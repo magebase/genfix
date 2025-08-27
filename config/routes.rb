@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'blog/:slug', to: 'blog#show', as: :blog_post
 
   # Quote requests
-  post 'quote_requests', to: 'quote_requests#create'
+  resources :quote_requests, only: [:create, :show, :update]
 
   # Rails Admin
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'

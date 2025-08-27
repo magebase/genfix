@@ -1,60 +1,32 @@
+import { Zap } from "lucide-react";
+
 export default function Footer() {
   return (
-    <footer className="pt-12 pb-8 border-t  bg-gradient-to-r from-gray-900 via-blue-900 to-gray-900 text-white relative overflow-hidden">
-      {/* Electricity-themed background pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-10 left-10 w-20 h-20 border-2 border-yellow-400 rounded-full"></div>
-        <div className="absolute top-20 right-20 w-16 h-16 border-2 border-orange-400 rounded-full"></div>
-        <div className="absolute bottom-20 left-1/4 w-12 h-12 border-2 border-blue-400 rounded-full"></div>
-        <div className="absolute bottom-10 right-1/3 w-8 h-8 border-2 border-green-400 rounded-full"></div>
-        {/* Lightning bolt pattern */}
-        <svg
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 text-yellow-400 opacity-20"
-          fill="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path d="M13 10V3L4 14h7v7l9-11h-7z" />
-        </svg>
-      </div>
-
-      <div className="max-w-6xl mx-auto px-6 relative z-10">
+    <footer className="pt-12 pb-8 bg-gray-900 text-white">
+      <div className="max-w-6xl mx-auto px-6">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Company Info */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-lg flex items-center justify-center">
-                <svg
-                  className="w-6 h-6 text-white"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 10V3L4 14h7v7l9-11h-7z"
-                  />
-                </svg>
+              <div className="w-12 h-12 bg-gray-800 rounded-lg flex items-center justify-center">
+                <Zap className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h3 className="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-orange-400 bg-clip-text text-transparent">
-                  Genfix
-                </h3>
-                <p className="text-blue-200 text-sm">
+                <h3 className="text-2xl font-bold text-white">Genfix</h3>
+                <p className="text-gray-400 text-sm">
                   Powering Brisbane Since 2020
                 </p>
               </div>
             </div>
-            <p className="text-gray-300 mb-4">
-              ⚡ Your trusted partner for commercial generator hire across
+            <p className="text-gray-400 mb-4">
+              Your trusted partner for commercial generator hire across
               Brisbane. Fast delivery, reliable equipment, and exceptional
               service.
             </p>
             <div className="flex space-x-4">
               <a
                 href="#"
-                className="w-10 h-10 bg-blue-600 hover:bg-blue-500 rounded-full flex items-center justify-center transition-colors"
+                className="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center transition-colors"
               >
                 <svg
                   className="w-5 h-5"
@@ -66,7 +38,7 @@ export default function Footer() {
               </a>
               <a
                 href="#"
-                className="w-10 h-10 bg-blue-600 hover:bg-blue-500 rounded-full flex items-center justify-center transition-colors"
+                className="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center transition-colors"
               >
                 <svg
                   className="w-5 h-5"
@@ -78,7 +50,7 @@ export default function Footer() {
               </a>
               <a
                 href="#"
-                className="w-10 h-10 bg-blue-600 hover:bg-blue-500 rounded-full flex items-center justify-center transition-colors"
+                className="w-10 h-10 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center transition-colors"
               >
                 <svg
                   className="w-5 h-5"
@@ -93,14 +65,14 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-semibold text-lg mb-4 text-yellow-400">
+            <h4 className="font-semibold text-lg mb-4 text-gray-300">
               Quick Links
             </h4>
             <ul className="space-y-2">
               <li>
                 <a
                   href="#features"
-                  className="text-gray-300 hover:text-yellow-400 transition-colors"
+                  className="text-gray-300 hover:text-white transition-colors"
                 >
                   Features
                 </a>
@@ -108,7 +80,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#equipment"
-                  className="text-gray-300 hover:text-yellow-400 transition-colors"
+                  className="text-gray-300 hover:text-white transition-colors"
                 >
                   Equipment
                 </a>
@@ -116,7 +88,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#quote"
-                  className="text-gray-300 hover:text-yellow-400 transition-colors"
+                  className="text-gray-300 hover:text-white transition-colors"
                 >
                   Get Quote
                 </a>
@@ -124,7 +96,7 @@ export default function Footer() {
               <li>
                 <a
                   href="#"
-                  className="text-gray-300 hover:text-yellow-400 transition-colors"
+                  className="text-gray-300 hover:text-white transition-colors"
                 >
                   About Us
                 </a>
@@ -134,13 +106,13 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div>
-            <h4 className="font-semibold text-lg mb-4 text-yellow-400">
+            <h4 className="font-semibold text-lg mb-4 text-gray-300">
               Contact Us
             </h4>
             <div className="space-y-3">
               <div className="flex items-center gap-2">
                 <svg
-                  className="w-4 h-4 text-orange-400"
+                  className="w-4 h-4 text-gray-400"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -152,11 +124,11 @@ export default function Footer() {
                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                   />
                 </svg>
-                <span className="text-gray-300">0412 345 678</span>
+                <span className="text-gray-200">0412 345 678</span>
               </div>
               <div className="flex items-center gap-2">
                 <svg
-                  className="w-4 h-4 text-orange-400"
+                  className="w-4 h-4 text-gray-400"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -168,11 +140,11 @@ export default function Footer() {
                     d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
                   />
                 </svg>
-                <span className="text-gray-300">hello@genfix.example</span>
+                <span className="text-gray-200">hello@genfix.example</span>
               </div>
               <div className="flex items-center gap-2">
                 <svg
-                  className="w-4 h-4 text-orange-400"
+                  className="w-4 h-4 text-gray-400"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -190,7 +162,7 @@ export default function Footer() {
                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
                   />
                 </svg>
-                <span className="text-gray-300">Brisbane, QLD</span>
+                <span className="text-gray-200">Brisbane, QLD</span>
               </div>
             </div>
           </div>
@@ -205,19 +177,19 @@ export default function Footer() {
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a
               href="#"
-              className="text-gray-400 hover:text-yellow-400 text-sm transition-colors"
+              className="text-gray-400 hover:text-white text-sm transition-colors"
             >
               Privacy Policy
             </a>
             <a
               href="#"
-              className="text-gray-400 hover:text-yellow-400 text-sm transition-colors"
+              className="text-gray-400 hover:text-white text-sm transition-colors"
             >
               Terms of Service
             </a>
             <a
               href="#"
-              className="text-gray-400 hover:text-yellow-400 text-sm transition-colors"
+              className="text-gray-400 hover:text-white text-sm transition-colors"
             >
               Cookie Policy
             </a>

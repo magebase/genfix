@@ -39,4 +39,58 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+
+  # Configure QuoteRequest model for Rails Admin
+  config.model QuoteRequest do
+    list do
+      field :id
+      field :name
+      field :email
+      field :phone
+      field :equipment_type
+      field :rental_duration
+      field :status
+      field :quote_price
+      field :created_at
+    end
+
+    show do
+      field :id
+      field :name
+      field :email
+      field :phone
+      field :equipment_type
+      field :rental_duration
+      field :delivery_address
+      field :special_requirements
+      field :status
+      field :quote_price
+      field :admin_notes
+      field :quoted_at
+      field :approved_at
+      field :stripe_invoice_id
+      field :created_at
+      field :updated_at
+    end
+
+    edit do
+      field :name
+      field :email
+      field :phone
+      field :equipment_type
+      field :rental_duration
+      field :delivery_address
+      field :special_requirements
+      field :status
+      field :quote_price
+      field :admin_notes
+      field :quoted_at
+      field :approved_at
+      field :stripe_invoice_id
+    end
+
+    # Custom label for navigation
+    label "Quote Requests"
+    label_plural "Quote Requests"
+  end
 end

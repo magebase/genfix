@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_08_27_103348) do
+ActiveRecord::Schema[8.0].define(version: 2025_08_27_110107) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -116,6 +116,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_08_27_103348) do
     t.jsonb "features"
     t.string "image_url"
     t.boolean "is_available"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "faqs", force: :cascade do |t|
+    t.text "question"
+    t.text "answer"
+    t.integer "position"
+    t.boolean "published"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

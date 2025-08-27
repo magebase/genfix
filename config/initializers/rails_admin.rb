@@ -135,4 +135,40 @@ RailsAdmin.config do |config|
     label "Equipment"
     label_plural "Equipment"
   end
+
+  # Configure FAQ model for Rails Admin
+  config.model Faq do
+    list do
+      field :id
+      field :question
+      field :published
+      field :position
+      field :created_at
+    end
+
+    show do
+      field :id
+      field :question
+      field :answer
+      field :position
+      field :published
+      field :created_at
+      field :updated_at
+    end
+
+    edit do
+      field :question
+      field :answer do
+        html_attributes do
+          { rows: 6 }
+        end
+      end
+      field :position
+      field :published
+    end
+
+    # Custom label for navigation
+    label "FAQ"
+    label_plural "FAQs"
+  end
 end

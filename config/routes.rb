@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # FAQs page
+  get 'faqs', to: 'faqs#index'
+
   # Equipment page
   get 'equipment', to: 'equipment#index'
 

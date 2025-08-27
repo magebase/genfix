@@ -85,7 +85,7 @@ const Index: React.FC<EquipmentIndexProps> = ({ equipment }) => {
                   data-aos-delay="800"
                 >
                   <a
-                    href="#quote-form"
+                    href="/#quote-form"
                     className="inline-flex items-center gap-2 bg-gray-900 text-white px-8 py-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors"
                   >
                     Get Equipment Quote
@@ -131,7 +131,7 @@ const Index: React.FC<EquipmentIndexProps> = ({ equipment }) => {
                       key={item.id}
                       className="bg-white rounded-lg shadow-lg p-6 border border-gray-200"
                       data-aos="fade-up"
-                      data-aos-delay={200 + (index * 100)}
+                      data-aos-delay={200 + index * 100}
                     >
                       <div className="mb-4">
                         <img
@@ -299,7 +299,7 @@ const Index: React.FC<EquipmentIndexProps> = ({ equipment }) => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <a
-                  href="#quote-form"
+                  href="/#quote-form"
                   className="inline-flex items-center gap-2 bg-white text-gray-900 px-8 py-4 rounded-lg font-semibold hover:bg-gray-50 transition-colors"
                 >
                   Get Equipment Quote

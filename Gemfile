@@ -59,3 +59,6 @@ end
 gem "inertia_rails", "~> 3.10"
 
 gem "vite_rails", "~> 3.0"
+
+# Admin interface
+gem "rails_admin", "~> 3.1"

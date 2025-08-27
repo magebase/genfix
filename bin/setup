@@ -15,6 +15,17 @@ FileUtils.chdir APP_ROOT do
   puts "== Installing dependencies =="
   system("bundle check") || system!("bundle install")
 
+  # Install Playwright JS runtime matching the Ruby driver
+  begin
+    require 'playwright'
+    playwright_version = Playwright::COMPATIBLE_PLAYWRIGHT_VERSION.strip
+    puts "== Ensuring Playwright #{playwright_version} is installed via yarn =="
+    system!("yarn add -D playwright@#{playwright_version}")
+    system!("yarn run playwright install --with-deps")
+  rescue LoadError
+    # Playwright gem not present; skip
+  end
+
   # puts "\n== Copying sample files =="
   # unless File.exist?("config/database.yml")
   #   FileUtils.cp "config/database.yml.sample", "config/database.yml"

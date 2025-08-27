@@ -3,10 +3,10 @@ image: magebase/genfix
 
 servers:
   web:
-    - 91.99.119.221
+    - deploy@91.99.119.221
   vite:
     hosts:
-      - 91.99.119.221
+      - deploy@91.99.119.221
     cmd: bin/vite ssr
     options:
       network-alias: vite_ssr
@@ -54,6 +54,7 @@ accessories:
       clear:
         POSTGRES_USER: genfix
         POSTGRES_DB: genfix_production
+        INERTIA_SSR_URL: http://vite_ssr:13714
       secret:
         - POSTGRES_PASSWORD
     files:

@@ -71,3 +71,6 @@ gem "devise", "~> 4.9"
 
 # Payment processing
 gem "stripe", "~> 10.0"
+
+# Analytics
+gem "ahoy_matey", "~> 5.0"

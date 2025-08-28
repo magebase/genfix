@@ -74,7 +74,7 @@ gem "aws-actionmailer-ses", "~> 1"
 gem "devise", "~> 4.9"
 
 # Payment processing
-gem "stripe", "~> 10.0"
+gem "stripe", "~> 15.5"
 
 # Analytics
 gem "ahoy_matey", "~> 5.0"
